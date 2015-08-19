@@ -2,6 +2,7 @@
 	Fully covered hosts in *thecthulhu.com:
 
 		- (www.)?
+		- am
 		- atlas
 		- globe
 		- hacked
@@ -14,6 +15,7 @@
 	<!--	Direct rewrites:
 				-->
 	<target host="thecthulhu.com" />
+	<target host="am.thecthulhu.com" />
 	<target host="atlas.thecthulhu.com" />
 	<target host="globe.thecthulhu.com" />
 	<target host="hacked.thecthulhu.com" />
