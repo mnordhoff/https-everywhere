@@ -100,8 +100,14 @@ fi
 
 # Prepare packages suitable for uploading to EFF and AMO, respectively.
 [ -d pkg ] || mkdir pkg
-rsync -a --delete --delete-excluded --exclude /chrome/content/rules src/ pkg/xpi-eff
-cp -a translations/* pkg/xpi-eff/chrome/locale/
+# Copy src to pkg/xpi-eff. Except for src/chrome/content/rules. Plus merge
+# translations into pkg/xpi-eff/chrome/locale. Except for its dot files. Then
+# copy pkg/xpi-eff to pkg/xpi-amo. Simple!
+rm -r pkg/xpi-eff/chrome/content/rules
+find translations/ -maxdepth 1 -mindepth 1 |\
+ sed -e 's.^translations./chrome/locale.' |\
+ rsync -a --delete --exclude /chrome/content/rules --exclude-from - src/ pkg/xpi-eff
+rsync -a --exclude '/.*' translations/ pkg/xpi-eff/chrome/locale
 rsync -a --delete pkg/xpi-eff/ pkg/xpi-amo
 # The AMO version of the package cannot contain the updateKey or updateURL tags.
 # Also, it has a different id than the eff-hosted version, because Firefox now
