@@ -103,7 +103,7 @@ fi
 # Copy src to pkg/xpi-eff. Except for src/chrome/content/rules. Plus merge
 # translations into pkg/xpi-eff/chrome/locale. Except for its dot files. Then
 # copy pkg/xpi-eff to pkg/xpi-amo. Simple!
-rm -r pkg/xpi-eff/chrome/content/rules
+rm -rf pkg/xpi-eff/chrome/content/rules
 find translations/ -maxdepth 1 -mindepth 1 |\
  sed -e 's.^translations./chrome/locale.' |\
  rsync -a --delete --exclude /chrome/content/rules --exclude-from - src/ pkg/xpi-eff
