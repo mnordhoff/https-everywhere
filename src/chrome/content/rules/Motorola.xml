@@ -7,7 +7,6 @@
 
 	CDN buckets:
 
-		- motorola-global-portal.custhelp.com
 		- abea-2fo3vv.client.shareholder.com
 
 		- abea-58xvpr.client.shareholder.com
@@ -25,6 +24,8 @@
 
 
 	Problematic domains:
+
+		- motorola-global-portal.custhelp.com	(see Custhelp.com.xml)
 
 		- motorola.com *
 
