@@ -9,8 +9,8 @@ prerelease: pkg
 pkg:
 	mkdir pkg
 clean:
-	rm -rf pkg/xpi-amo/ pkg/xpi-eff/
-	rm -f pkg/*.xpi
+	rm -rf pkg/crx/ pkg/xpi-amo/ pkg/xpi-eff/
+	rm -f pkg/*.crx pkg/*.xpi
 	rm -f src/chrome/content/rules/default.rulesets
 
 .PHONY: clean prerelease
