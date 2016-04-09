@@ -1,0 +1,8 @@
+<ruleset name="explainxkcd.com">
+	<target host="explainxkcd.com" />
+	<target host="www.explainxkcd.com" />
+
+	<securecookie host=".+" name=".+" />
+
+	<rule from="^http:" to="https:" />
+</ruleset>
