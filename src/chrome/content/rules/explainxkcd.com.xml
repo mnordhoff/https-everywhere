@@ -1,8 +1,24 @@
+<!--
+	The signup page uses an http: ReCaptcha script, causing false MCB and breaking it.
+-->
 <ruleset name="explainxkcd.com">
 	<target host="explainxkcd.com" />
 	<target host="www.explainxkcd.com" />
 
+	<!-- XXX Coverage checker wants another test. -->
+	<exclusion pattern="^http://(www\.)?explainxkcd\.com/wiki/index\.php\?title=Special:UserLogin&amp;type=signup&amp;returnto=" />
+
+		<test url="http://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="http://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+
 	<securecookie host=".+" name=".+" />
+
+	<rule from="^https://(www\.)?explainxkcd\.com/wiki/index\.php\?title=Special:UserLogin&amp;type=signup&amp;returnto="
+		to="http://$1explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto="
+		downgrade="1" />
+
+		<test url="https://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="https://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
 
 	<rule from="^http:" to="https:" />
 </ruleset>
