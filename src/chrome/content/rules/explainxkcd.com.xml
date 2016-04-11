@@ -11,7 +11,7 @@
 		<test url="http://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
 		<test url="http://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
 
-	<securecookie host=".+" name=".+" />
+	<!--securecookie host=".+" name=".+" /-->
 
 	<rule from="^https://(www\.)?explainxkcd\.com/wiki/index\.php\?title=Special:UserLogin&amp;type=signup&amp;returnto="
 		to="http://$1explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto="
