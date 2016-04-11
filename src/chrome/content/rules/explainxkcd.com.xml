@@ -1,4 +1,7 @@
-<ruleset name="explainxkcd.com">
+<!--
+	The signup page uses an http: ReCaptcha script, causing false MCB and breaking it.
+-->
+<ruleset name="explainxkcd.com" platform="mixedcontent">
 	<target host="explainxkcd.com" />
 	<target host="www.explainxkcd.com" />
 
