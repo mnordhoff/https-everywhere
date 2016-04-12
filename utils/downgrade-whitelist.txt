@@ -6,6 +6,7 @@ Contextly.com (partial)
 dafont.com (partial)
 dict.cc
 EvoTronix (partial)
+explainxkcd.com
 Fourmilab (partial)
 IBTimes.co.uk
 ImageShack (partial)
