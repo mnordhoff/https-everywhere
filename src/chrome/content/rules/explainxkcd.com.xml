@@ -5,11 +5,12 @@
 	<target host="explainxkcd.com" />
 	<target host="www.explainxkcd.com" />
 
-	<!-- XXX Coverage checker wants another test. -->
 	<exclusion pattern="^http://(www\.)?explainxkcd\.com/wiki/index\.php\?title=Special:UserLogin&amp;type=signup&amp;returnto=" />
 
 		<test url="http://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="http://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=xkcd" />
 		<test url="http://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="http://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=xkcd" />
 
 	<!--securecookie host=".+" name=".+" /-->
 
@@ -18,7 +19,9 @@
 		downgrade="1" />
 
 		<test url="https://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="https://explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=xkcd" />
 		<test url="https://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=Main+Page" />
+		<test url="https://www.explainxkcd.com/wiki/index.php?title=Special:UserLogin&amp;type=signup&amp;returnto=xkcd" />
 
 	<rule from="^http:" to="https:" />
 </ruleset>
