@@ -1,0 +1,6 @@
+<ruleset name="mnrd.us">
+	<target host="mnrd.us" />
+	<target host="www.mnrd.us" />
+
+	<rule from="^http:" to="https:" />
+</ruleset>
