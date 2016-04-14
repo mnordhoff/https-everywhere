@@ -1,0 +1,5 @@
+<ruleset name="apt.linode.com">
+	<target host="apt.linode.com" />
+
+	<rule from="^http:" to="https:" />
+</ruleset>
