@@ -34,4 +34,4 @@ script:
   - ./test.sh
   - test/travis-ruleset-fetch.sh
 sudo: required
-dist: trusty
+dist: wily
