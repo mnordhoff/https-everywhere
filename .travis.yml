@@ -19,6 +19,11 @@ addons:
       - chromium-browser
 virtualenv:
   system_site_packages: true
+before_install:
+  - sudo apt-add-repository ppa:mnordhoff/curl-backport -y
+  - sudo apt-add-repository ppa:mnordhoff/curl-backport-test -y
+  - sudo apt-get update -q
+  - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev python-pycurl -y
 install:
   - pip install -r test/rules/requirements.txt
   - pip install -r test/chromium/requirements.txt
