@@ -20,9 +20,11 @@ addons:
 virtualenv:
   system_site_packages: true
 before_install:
-  - sudo apt-add-repository ppa:mnordhoff/curl-backport -y
+  # Backport curl, pycurl and some dependencies from Ubuntu 16.04 Xenial (#4645)
+  - sudo apt-add-repository ppa:mnordhoff/curl-backport-xenial -y
   - sudo apt-get update -q
-  - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev python-pycurl -y
+  # librtmp1 is a dependency of curl
+  - sudo apt-get install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev librtmp1 python-pycurl -y
 install:
   - pip install -r test/rules/requirements.txt
   - pip install -r test/chromium/requirements.txt
