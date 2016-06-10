@@ -1,27 +1,25 @@
 <!--
 	For other Bitly coverage, see Bitly.xml.
 
+	Nonfunctional domains:
 
-	Insecure cookies are set for these domains:
+		- api.j.mp *
 
-		- .j.mp
+	* Refused
 
+	Problematic domains:
+
+		- j.mp *
+		- www.j.mp *
+
+	* Mismatched, CN: bit.ly
 -->
-<ruleset name="j.mp (partial)">
-
-	<!--	Direct rewrites:
-				-->
+<ruleset name="j.mp">
 	<target host="j.mp" />
 	<target host="www.j.mp" />
 
+	<securecookie host=".+" name=".+" />
 
-	<!--	Not secured by server:
-					-->
-	<!--securecookie host="^\.j\.mp$" name="^_bit$" /-->
-
-	<securecookie host="^\.j\.mp$" name=".+" />
-
-
-	<rule from="^http:" to="https:" />
-
+	<rule from="^http://(www\.)?j\.mp/"
+		to="https://bit.ly/" />
 </ruleset>
