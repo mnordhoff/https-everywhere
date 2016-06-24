@@ -7,22 +7,9 @@
 
 	Nonfunctional hosts in *liveinternet.ru:
 
-		- wiki.liveinternet.ru *
+		- wiki *
 
 	* Dropped
-
-
-	Problematic hosts in *liveinternet.ru
-
-		- ^ *
-
-	* Mismatched
-
-
-	Fully covered hosts in *liveinternet.ru:
-
-		- (www.)?	(^ → www)
-		- g
 
 
 	Insecure cookies are set for these hosts:
@@ -44,25 +31,17 @@
 -->
 <ruleset name="LiveInternet.ru (partial)">
 
-	<!--	Direct rewrites:
-				-->
+	<target host="liveinternet.ru" />
 	<target host="g.liveinternet.ru" />
 	<target host="www.liveinternet.ru" />
-
-	<!--	Complications:
-				-->
-	<target host="liveinternet.ru" />
 
 
 	<!--	Not secured by server:
 					-->
 	<!--securecookie host="^www\.liveinternet\.ru$" name="^lang$" /-->
 
-	<securecookie host="^(?:g|www)\.liveinternet\.ru$" name=".+" />
+	<securecookie host="^\w" name="." />
 
-
-	<rule from="^http://liveinternet\.ru/"
-		to="https://www.liveinternet.ru/" />
 
 	<rule from="^http:"
 		to="https:" />

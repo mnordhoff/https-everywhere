@@ -1,36 +1,12 @@
-# Config copied from
-#  http://www.theautomatedtester.co.uk/blog/2012/using-travis-ci-for-building-and-testing-firefox-addons.html
-language: python
-python:
-  - "2.7"
-cache: pip
-addons:
-  apt:
-    packages:
-      - libxml2-dev
-      - python-dev
-      - libcurl4-openssl-dev
-      - python-lxml
-  firefox: "37.0"
-virtualenv:
-  system_site_packages: true
-install:
-  - pip install -r https-everywhere-checker/requirements.txt
-before_script:
-  - sh -e /etc/init.d/xvfb start
-env:
-  - DISPLAY=':99.0'
+sudo: required
+language: generic
+services:
+  - docker
+before_install:
+  - docker build -t httpse .
 script:
-  - ./test.sh
-sudo: false
-notifications:
-  email:
-    recipients:
-      - jsha@eff.org
-  notifications:
-    irc:
-      channels:
-        - "irc.oftc.net#https-everywhere"
-      on_success: change
-      on_failure: change
-
+  - docker run --rm -ti -v $(pwd):/opt -e FIREFOX=/$FIREFOX/firefox/firefox httpse bash -c "./test.sh"
+  - docker run --rm -ti -v $(pwd):/opt -e FIREFOX=/$FIREFOX/firefox/firefox --privileged httpse bash -c "service miredo start && test/travis-ruleset-fetch.sh"
+env:
+  - FIREFOX=firefox-latest
+  - FIREFOX=firefox-esr-latest

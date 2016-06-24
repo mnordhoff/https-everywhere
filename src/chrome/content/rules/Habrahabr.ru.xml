@@ -2,60 +2,41 @@
 	For other TM coverage, see TMtm.ru.xml.
 
 
-	Nonfunctional subdomains:
+	Nonfunctional hosts in *habrahabr.ru:
 
 		- api ¹
-		- m ²
 
 	¹ 503, valid cert
-	² Redirects to ^
-
-
-	Fully covered subdomains:
-
-		- auth
-		- special
 
 
 	Mixed content:
 
-		- css on ^ and special from fonts.googleapis.com *
-
 		- Images, on:
 
-			- special from $self *
+			- ^ from www.viva64.com ʳ
 			- special from habrastorage.org *
 
 	* Secured by us
+	ʳ Unsecurable <= refused
 
 -->
 <ruleset name="Habrahabr.ru (partial)">
 
 	<target host="habrahabr.ru" />
-	<target host="*.habrahabr.ru" />
-		<!--
-			Redirect to http:
-						-->
-		<!--exclusion pattern="^http://habrahabr\.ru/$" /-->
-		<!--
-			Exceptions:
-					-->
-		<exclusion pattern="^http://habrahabr\.ru/(?!auth(?:$|[?/])|common\.css|favicon\.ico|habr\.gif|images/|main\.css|styles/)" />
+	<target host="auth.habrahabr.ru" />
+	<target host="m.habrahabr.ru" />
+	<target host="special.habrahabr.ru" />
+	<target host="www.habrahabr.ru" />
 
 
 	<!--	Not secured by server:
 					-->
 	<!--securecookie host="^special\.habrahabr\.ru$" name="^captcha$" /-->
 
-	<securecookie host="^special\.habrahabr\.ru$" name=".+" />
+	<securecookie host="^\w" name="." />
 
 
-	<!--	404s on www:
-				-->
-	<rule from="^http://www\.habrahabr\.ru/(?=auth(?:$|[?/])|favicon\.ico|images/|styles/)"
-		to="https://habrahabr.ru/" />
-
-	<rule from="^http://((?:auth|special|www)\.)?habrahabr\.ru/"
-		to="https://$1habrahabr.ru/" />
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>

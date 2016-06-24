@@ -7,21 +7,28 @@ To that end, here are some style guidelines for writing or modifying rulesets.
 They are intended to help and simplify in places where choices are ambiguous,
 but like all guidelines they can be broken if the circumstances require it.
 
-Avoid using the left-wildcard ("&lt;target host='*.example.com'&gt;") unless you
-really mean it. Many rules today specify a left-wildcard target, but the
-rewrite rules only rewrite an explicit list of hostnames.
+Avoid using the left-wildcard ("&lt;target host='*.example.com'&gt;") unless
+you intend to rewrite all or nearly all subdomains.  Many rules today specify
+a left-wildcard target, but the rewrite rules only rewrite an explicit list
+of hostnames.
 
 Instead, prefer listing explicit target hosts and a single rewrite from "^http:" to
 "^https:". This saves you time as a ruleset author because each explicit target
-host automatically creates a an implicit test URL, reducing the need to add your
+host automatically creates an implicit test URL, reducing the need to add your
 own test URLs. These also make it easier for someone reading the ruleset to figure out
 which subdomains are covered.
 
 If you know all subdomains of a given domain support HTTPS, go ahead and use a
 left-wildcard, along with a plain rewrite from "^http:" to "^https:". Make sure
 to add a bunch of test URLs for the more important subdomains. If you're not
-sure what subdomains might exist, check the 'subdomain' tab on Wolfram Alpha:
-http://www.wolframalpha.com/input/?i=_YOUR_DOMAIN_GOES_HERE_.
+sure what subdomains might exist, you can iteratively use google queries and enumerate
+the list of results like such:
+
+1. site:*.eff.org
+2. site:*.eff.org -site:www.eff.org
+3. site:*.eff.org -site:www.eff.org -site:ssd.eff.org
+
+... and so on.
 
 If there are a handful of tricky subdomains, but most subdomains can handle the
 plain rewrite from "^http:" to "^https:", specify the rules for the tricky
@@ -36,6 +43,8 @@ maintain, and are usually better expressed with a longer list of target hosts,
 plus a plain rewrite from "^http:" to "^https:".
 
 Prefer dashes over underscores in filenames. Dashes are easier to type.
+
+Use tabs and double quotes (`"`, not `'`).
 
 When matching an arbitrary DNS label (a single component of a hostname), prefer
 `([\w-]+)` for a single label (i.e www), or `([\w.-]+)` for multiple labels
@@ -55,11 +64,18 @@ non-capturing form adds extra line noise that makes rules harder to read.
 Generally you can achieve the same effect by choosing a correspondingly higher
 index for your replacement group to account for the groups you don't care about.
 
-Here is an example ruleset today:
+Avoid snapping redirects. For instance, if https://foo.fm serves HTTPS
+correctly, but redirects to https://foo.com, it's tempting to rewrite foo.fm to
+foo.com, to save users the latency of the redirect. However, such rulesets are
+less obviously correct and require more scrutiny. And the redirect can go out of
+date and cause problems. HTTPS Everywhere rulesets should change requests the minimum
+amount necessary to ensure a secure connection.
+
+Here is an example ruleset pre-style guidelines:
 
 ```
 <ruleset name="WHATWG.org">
-  <target host="whatwg.org" />
+  <target host='whatwg.org' />
   <target host="*.whatwg.org" />
 
   <rule from="^http://((?:developers|html-differences|images|resources|\w+\.spec|wiki|www)\.)?whatwg\.org/"
@@ -90,3 +106,4 @@ test URLs:
           to="https:" />
 
 </ruleset>
+
