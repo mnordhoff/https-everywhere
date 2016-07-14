@@ -46,14 +46,6 @@
 	<target host="manager.linode.com" />
 	<target host="stats.linode.com" />
 	<target host="status.linode.com" />
-	<target host="atlanta.webconsole.linode.com" />
-	<target host="dallas.webconsole.linode.com" />
-	<target host="frankfurt.webconsole.linode.com" />
-	<target host="fremont.webconsole.linode.com" />
-	<target host="london.webconsole.linode.com" />
-	<target host="newark.webconsole.linode.com" />
-	<target host="singapore.webconsole.linode.com" />
-	<target host="tokyo.webconsole.linode.com" />
 	<target host="www.linode.com" />
 	<target host="yum.linode.com" />
 	<target host="yum-longview.linode.com" />
