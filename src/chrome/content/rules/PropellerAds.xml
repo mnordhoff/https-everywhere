@@ -11,20 +11,22 @@
 
 		- (www.)propellerads.com	(rx_record_too_long)
 
+	Problematic domains:
+
+		- img.propellerads.com		(Mismatched)
 -->
 <ruleset name="PropellerAds (partial)">
 
-	<target host="*.propellerads.com" />
+	<target host="ad.propellerads.com" />
+	<target host="img.propellerads.com" />
 
 
-	<securecookie host="^ad\.propellerads\.com$" name=".+" />
+	<securecookie host="^ad\.propellerads\.com$" name="." />
 
 
 	<!--	Cert only matches ad.
 					-->
-	<rule from="^http://(?:ad|img)\.propellerads\.com/"
+	<rule from="^http://(ad|img)\.propellerads\.com/"
 		to="https://ad.propellerads.com/" />
 		
-	<test url="http://ad.propellerads.com/" />
-
 </ruleset>
