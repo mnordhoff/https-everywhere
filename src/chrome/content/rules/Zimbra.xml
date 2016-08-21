@@ -1,19 +1,5 @@
 <!--
-	CDN buckets:
-
-		- files.zimbra.com.s3.amazonaws.com
-
-		- files2.zimbra.com.edgesuite.net
-
-			- a1843.g.akamai.net
-
-
 	Problematic domains:
-
-		- zimbra.com subdomains:
-
-			- files		(amazonws)
-			- files2	(works, akamai)
 
 		- (www.)zimbrablog.com	(works; mismatched, CN: *.zimbra.com)
 
@@ -24,14 +10,12 @@
 
 			- (www.)
 			- blog
-			- files *
-			- files2 *
+			- files
+			- files2
 			- gallery
 			- help
 
 		- (www.)zimbrablog.com	(→ blog.zimbra.com)
-
-	* → s3.amazonaws.com/files.zimbra.com/
 
 
 	Mixed content:
@@ -76,15 +60,20 @@
 	<!--securecookie host="^\.zimbra\.com$" name="^(_mkto_trk|optimizely\w+|__utm\w)$" /-->
 	<securecookie host="^(?:.*\.)?zimbra\.com$" name=".+" />
 
+	<test url="http://blog.zimbra.com/" />
+	<test url="http://files.zimbra.com/" />
+	<test url="http://files.zimbra.com/docs/config-guide/index.html" />
+	<test url="http://files2.zimbra.com/" />
+	<test url="http://files2.zimbra.com/downloads/zdesktop/1833/zdesktop_1_0_4_build_1833_linux_i686.sh" />
+	<test url="http://gallery.zimbra.com/" />
+	<test url="http://help.zimbra.com/" />
+	<test url="http://www.zimbra.com/" />
 
-	<rule from="^http://files2?\.zimbra\.com/"
-		to="https://s3.amazonaws.com/files.zimbra.com/" />
-
-	<rule from="^http://([^/:@\.]+\.)?zimbra\.com/"
-		to="https://$1zimbra.com/" />
 
 	<rule from="^http://(?:www\.)?zimbrablog\.com/"
 		to="https://blog.zimbra.com/" />
 
-</ruleset>
+	<rule from="^http:"
+		to="https:" />
 
+</ruleset>
