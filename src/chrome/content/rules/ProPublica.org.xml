@@ -1,10 +1,9 @@
 <!--
 	CDN buckets:
 
-		- s3.amazonaws.com/cdn.propublica.net/
 		- propublica.s3.amazonaws.com
+		- d1t8xfi7n2gbr1.cloudfront.net
 		- d3i4wq2ul46tvd.cloudfront.net
-
 
 	Problematic domains:
 
@@ -31,9 +30,18 @@
 <ruleset name="ProPublica.org">
 
 	<target host="propublica.net" />
-	<target host="*.propublica.net" />
+	<target host="cdn.propublica.net" />
+	<target host="www.propublica.net" />
 	<target host="propublica.org" />
-	<target host="*.propublica.org" />
+	<target host="mail.propublica.org" />
+	<target host="projects.propublica.org" />
+	<target host="securedrop.propublica.org" />
+	<target host="static.propublica.org" />
+	<target host="tiles-a.propublica.org" />
+	<target host="tiles-b.propublica.org" />
+	<target host="tiles-c.propublica.org" />
+	<target host="tiles-d.propublica.org" />
+	<target host="www.propublica.org" />
 
 
 	<!--	Not secured by server:
@@ -47,12 +55,12 @@
 		to="https://www.propublica.org/" />
 
 	<rule from="^http://cdn\.propublica\.net/"
-		to="https://s3.amazonaws.com/cdn.propublica.net/" />
-
-	<rule from="^http://(www\.|mail\.|projects\.|static\.|securedrop\.)?propublica\.org/"
-		to="https://$1propublica.org/" />
+		to="https://d1t8xfi7n2gbr1.cloudfront.net/" />
 
 	<rule from="^http://tiles-[abcd]\.propublica\.org/"
 		to="https://d3i4wq2ul46tvd.cloudfront.net/" />
+
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>
