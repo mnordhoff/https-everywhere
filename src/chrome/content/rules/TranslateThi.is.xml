@@ -15,6 +15,6 @@
 
 
 	<rule from="^http://x\.translateth\.is/"
-		to="https://s3.amazonaws.com/x.translateth.is/" />
+		to="https://d556hdjwaek7d.cloudfront.net/" />
 
 </ruleset>
