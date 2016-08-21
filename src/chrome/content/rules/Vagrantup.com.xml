@@ -4,8 +4,6 @@
 
 	CDN buckets:
 
-		- files.vagrantup.com.s3.amazonaws.com
-
 		- vagrant-downloads.herokuapp.com
 
 			- downloads
@@ -15,7 +13,6 @@
 
 		- ^		(dropped)
 		- downloads	(mismatched, CN: *.herokuapp.com)
-		- files		(amazonws)
 
 
 	Insecure cookies are set for these domains:
@@ -56,9 +53,6 @@
 
 	<rule from="^http://downloads\.vagrantup\.com/"
 		to="https://vagrant-downloads.herokuapp.com/" />
-
-	<rule from="^http://files\.vagrantup\.com/"
-		to="https://s3.amazonaws.com/files.vagrantup.com/" />
 
 	<rule from="^http:"
 		to="https:" />
